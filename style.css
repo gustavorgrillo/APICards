@@ -1,0 +1,37 @@
+table {
+	border-collapse: collapse;
+	margin: auto;
+}
+
+	td {
+	border: 10px solid black;
+	padding: 40px;
+	text-align: center;
+}
+
+
+
+	th {
+	background-color: #780606;
+	color: rgb(93, 4, 236);
+	padding: 10px;
+	text-align: left;
+}
+
+
+
+	body{
+
+	background-image: url(cartas.jpg);
+}
+
+	ul#cards {
+	padding: 0;
+  }
+  
+  li {
+	display: inline;
+	list-style: none;
+	padding: 0;
+	margin-right: 35px;
+  }

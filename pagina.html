@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>API DAS CARTAS</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+</head>
+<body>
+	
+	
+	<h1 style="text-align:center">API DAS CARTAS</h1>
+	
+	<form id="card-form">
+		<br><label for="num-decks">Quantidade de baralhos:</label>
+		<br><input type="number" id="num-decks" name="numDecks" min="1" max="10" required>
+		<br><label for="num-cards">Quantidade de cartas por baralho:</label>
+		<br><input type="number" id="num-cards" name="numCards" min="1" max="52" required>
+		<br><label for="card-value">Valor da carta:</label>
+		<br><select id="card-value" name="cardValue" required>
+
+			<option value="ACE">Ás</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="JACK">Valete</option>
+			<option value="QUEEN">Rainha</option>
+			<option value="KING">Reis</option>
+		</select>
+		<label for="card-suit">Naipe</label>
+		<select id="card-suit" name="cardSuit" required>
+			<option value="ESPADAS">Espadas</option>
+			<option value="COPAS">Copas</option>
+			<option value="PAUS">Paus</option>
+			<option value="OUROS">Ouros</option>
+		</select>
+		<input type="submit" value="Enviar">
+	</form>
+	<div id="card-list"></div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="script.js"></script>
+
+	<button id="dealCards">Cartas do Dealer</button>
+
+	<button onclick=" fApi.resquisicaoConsultar() ">Chamar as Cartas</button>
+<script>
+function resquisicaoConsultar() {
+  console.log('A função foi chamada');
+}
+</script>
+
+	
+
+
+<div id="cards">
+
+</ul>
+<span id="result"></span>
+
+<script src="jquery-3.5.1.min.js" ></script>
+
+
+
+<script>
+
+var endpoint = 'https://deckofcardsapi.com/api/deck/kxozasf3edqu/draw/?count=2'
+
+	fApi = {
+resquisicaoConsultar : function () {
+            try {
+                $.ajax({
+                url: endpoint,
+                data: null,
+                type: 'get',
+                contentType:'application/json',
+                dataType: 'json',
+                success: function (result) {
+                  console.log(result);
+				  $(result.cards).each(function(i,item){
+					console.log(item.image)
+
+				$('#cards').append('<img src="'+item.image+'"/>')
+				  })
+				}});
+			//utilizar a função.html e concatenar a tag img com o retorno item.image
+			
+		}
+			catch (e){
+              console.log(e.message);
+            }
+		}
+}
+		
+
+</script>
+</body>
+</html>
